@@ -1,0 +1,11 @@
+__pycache__/
+venv/
+controllers/__pycache__/
+converters/__pycache__/
+database/__pycache__/
+factory/__pycache__/
+services/__pycache__/
+
+uploads/
+outputs/
+converter.db
