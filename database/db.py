@@ -8,7 +8,11 @@ from sqlalchemy import create_engine, Column, Integer, String, DateTime, Text
 from sqlalchemy.orm import declarative_base, sessionmaker
 from datetime import datetime
 
-SQLALCHEMY_DATABASE_URL = "sqlite:///./converter.db"
+from pathlib import Path
+_db_dir = Path(__file__).resolve().parent.parent.parent / "file-classification-"
+_db_dir.mkdir(parents=True, exist_ok=True)
+_db_path = _db_dir / "converter.db"
+SQLALCHEMY_DATABASE_URL = f"sqlite:///{_db_path.as_posix()}"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
