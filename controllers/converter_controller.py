@@ -5,6 +5,7 @@ from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session
 
 from services.converter_service import ConverterService
+from services.history_service import HistoryService
 from database.db import get_db
 
 router = APIRouter()
@@ -122,7 +123,6 @@ async def json_to_xml(
 
 @router.get("/history")
 def get_history(limit: int = 100, db: Session = Depends(get_db)):
-    from services.history_service import HistoryService
 
     history_service = HistoryService()
     records = history_service.get_all(db, limit=limit)
